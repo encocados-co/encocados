@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>encocados — Tu almuerzo de chef, en coca</title>
+<link rel="icon" type="image/png" href="encocados-icon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Patrick+Hand&family=Lilita+One&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --crema: #FFF0DC;
+    --crema-claro: #FFF8EE;
+    --naranja: #E5461A;
+    --naranja-dark: #C73A14;
+    --naranja-glow: rgba(229,70,26,0.1);
+    --durazno: #F5CA85;
+    --durazno-claro: #FAE0B5;
+    --lavanda: #BCC2DC;
+    --lavanda-claro: #D8DCE9;
+    --blanco: #FFFFFF;
+    --negro: #1A1A1A;
+    --negro2: #0A0A0A;
+    --gris: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--crema);
+    color: var(--negro);
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(255,240,220,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: 22px; color: var(--naranja);
+  }
+
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a {
+    color: rgba(0,0,0,0.4); text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 600; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--naranja); }
+
+  .nav-cta {
+    background: var(--naranja); color: var(--blanco);
+    padding: 10px 24px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s;
+  }
+  .nav-cta:hover { transform: scale(1.05); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(170deg, var(--naranja) 0%, #D03A10 25%, var(--crema) 60%, var(--crema-claro) 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 40px 80px;
+  }
+
+  .hero-content { max-width: 800px; }
+
+  .hero-brand {
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: clamp(48px, 8vw, 84px);
+    color: var(--blanco); line-height: 1;
+  }
+
+  .hero-tagline {
+    font-family: 'Patrick Hand', cursive;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--crema);
+    margin-top: 10px;
+  }
+
+  .hero-desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(0,0,0,0.45); line-height: 1.7;
+    margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+
+  .hero-cta {
+    display: inline-block; margin-top: 36px;
+    background: var(--naranja); color: var(--blanco);
+    padding: 16px 40px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .hero-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(229,70,26,0.3);
+  }
+
+  .hero-tags {
+    display: flex; gap: 14px; justify-content: center;
+    flex-wrap: wrap; margin-top: 28px;
+  }
+  .hero-tag {
+    background: var(--blanco); border: 1px solid rgba(0,0,0,0.06);
+    padding: 8px 20px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px; color: rgba(0,0,0,0.45); font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 40px; }
+
+  .section-label {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 4px; color: var(--naranja); margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Lilita One', sans-serif;
+    font-size: clamp(30px, 4vw, 46px); font-weight: 400;
+    text-align: center; margin-bottom: 16px; line-height: 1.2;
+    color: var(--negro);
+  }
+
+  .section-sub {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px; color: rgba(0,0,0,0.4);
+    text-align: center; max-width: 600px;
+    margin: 0 auto 40px; line-height: 1.7;
+  }
+
+  /* COMO FUNCIONA */
+  .como { background: var(--blanco); color: var(--negro); }
+
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .step-card {
+    background: var(--crema-claro);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 20px; padding: 30px; text-align: center;
+    transition: transform 0.3s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .step-card:hover { transform: translateY(-4px); }
+
+  .step-num {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--naranja); color: var(--blanco);
+    font-family: 'Lilita One', sans-serif; font-size: 22px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .step-card h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 20px; font-weight: 400; margin-bottom: 8px;
+    color: var(--negro);
+  }
+
+  .step-card p { font-family: 'Quicksand', sans-serif; font-size: 15px; color: rgba(0,0,0,0.45); line-height: 1.6; }
+
+  /* QUE INCLUYE */
+  .incluye-section { background: var(--naranja); color: var(--blanco); }
+  .incluye-section .section-label { color: var(--crema); }
+  .incluye-section .section-title { color: var(--blanco); }
+  .incluye-section .section-sub { color: rgba(255,255,255,0.6); }
+
+  .incluye-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .incluye-card {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px; padding: 28px;
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: transform 0.3s;
+    backdrop-filter: blur(4px);
+  }
+  .incluye-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.2); }
+
+  .incluye-icon { font-size: 32px; flex-shrink: 0; }
+  .incluye-card h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 18px; font-weight: 400; color: var(--blanco);
+    margin-bottom: 4px;
+  }
+  .incluye-card p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+
+  /* SLIDER */
+  .slider-section {
+    padding: 60px 0 80px;
+    background: var(--crema);
+    overflow: hidden;
+  }
+
+  .slider-section .section-label,
+  .slider-section .section-title,
+  .slider-section .section-sub { padding: 0 40px; }
+
+  .slider-track {
+    display: flex;
+    gap: 16px;
+    animation: slideLeft 25s linear infinite;
+    width: max-content;
+    padding: 0 16px;
+  }
+
+  .slider-track:hover { animation-play-state: paused; }
+
+  @keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .slider-item {
+    flex-shrink: 0;
+    width: 280px; height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .slider-item img, .slider-item video {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(1.05) contrast(1.15) saturate(1.4) sepia(0.08);
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .slider-item:hover img { transform: scale(1.06); }
+
+  .slider-item .s-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent 0%, rgba(0,0,0,0.8) 100%);
+    padding: 24px 18px 18px;
+  }
+
+  .s-overlay-title {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 16px; font-weight: 400; color: white;
+  }
+
+  .s-overlay-sub {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px;
+  }
+
+  /* PLANES */
+  .planes { background: var(--blanco); color: var(--negro); }
+
+  .planes-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .plan-card {
+    background: var(--crema-claro);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 24px; padding: 36px 28px;
+    text-align: center; position: relative;
+    transition: transform 0.3s;
+  }
+  .plan-card:hover { transform: translateY(-4px); }
+
+  .plan-card.destacado {
+    border: 3px solid var(--naranja);
+    transform: scale(1.03);
+    background: var(--blanco);
+  }
+  .plan-card.destacado:hover { transform: scale(1.05); }
+
+  .plan-popular {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--naranja); color: var(--blanco);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+    padding: 5px 18px; border-radius: 20px; text-transform: uppercase;
+  }
+
+  .plan-name {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 24px; font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .plan-card:nth-child(1) .plan-name { color: var(--naranja); }
+  .plan-card:nth-child(2) .plan-name { color: var(--naranja); }
+  .plan-card:nth-child(3) .plan-name { color: var(--naranja); }
+
+  .plan-dias { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.35); margin-bottom: 16px; }
+
+  .plan-price {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 42px; font-weight: 400; color: var(--negro);
+  }
+
+  .plan-per { font-family: 'Quicksand', sans-serif; font-size: 13px; color: rgba(0,0,0,0.35); margin-bottom: 20px; }
+
+  .plan-divider { width: 40px; height: 2px; background: var(--durazno); margin: 0 auto 20px; }
+
+  .plan-features { list-style: none; text-align: left; display: grid; gap: 8px; }
+  .plan-features li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; color: rgba(0,0,0,0.5); padding-left: 24px; position: relative;
+  }
+  .plan-features li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--naranja); font-weight: 900;
+  }
+
+  .plan-btn {
+    display: inline-block; margin-top: 24px;
+    padding: 12px 30px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s;
+  }
+
+  .plan-card:nth-child(1) .plan-btn { background: var(--naranja-glow); color: var(--naranja); }
+  .plan-card:nth-child(2) .plan-btn { background: var(--naranja); color: var(--blanco); }
+  .plan-card:nth-child(3) .plan-btn { background: var(--naranja-glow); color: var(--naranja); }
+  .plan-btn:hover { transform: scale(1.05); }
+
+  /* KIT */
+  .kit-section {
+    max-width: 800px; margin: 40px auto 0;
+    background: var(--crema-claro);
+    border: 2px solid var(--durazno);
+    border-radius: 20px; padding: 30px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  .kit-info h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 20px; font-weight: 400; color: var(--negro);
+  }
+  .kit-info p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.4); margin-top: 4px; }
+  .kit-price {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 32px; font-weight: 400; color: var(--naranja);
+  }
+
+  /* ECO */
+  .eco { background: var(--lavanda-claro); color: var(--negro); }
+
+  .eco-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; max-width: 900px; margin: 0 auto;
+  }
+
+  .eco-card {
+    text-align: center; padding: 30px;
+    background: var(--blanco);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  .eco-icon { font-size: 40px; margin-bottom: 12px; }
+  .eco-card h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 18px; font-weight: 400; color: var(--negro); margin-bottom: 6px;
+  }
+  .eco-card p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.4); line-height: 1.5; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, var(--naranja), var(--naranja-dark));
+    text-align: center; padding: 80px 40px;
+  }
+
+  .cta-final h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: clamp(28px, 4vw, 42px); font-weight: 400;
+    color: var(--blanco); margin-bottom: 12px;
+  }
+
+  .cta-final p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; color: rgba(255,255,255,0.6);
+    max-width: 500px; margin: 0 auto 30px; line-height: 1.6;
+  }
+
+  .cta-final-btn {
+    display: inline-block;
+    background: var(--blanco); color: var(--naranja);
+    padding: 16px 40px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s;
+  }
+  .cta-final-btn:hover { transform: scale(1.05); }
+
+  /* FOOTER */
+  footer {
+    background: var(--negro); padding: 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: 24px; color: var(--crema);
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 16px; color: var(--naranja);
+    margin-bottom: 20px;
+  }
+
+  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 20px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.3); text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px; font-weight: 600; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--naranja); }
+
+  .footer-copy { font-family: 'Quicksand', sans-serif; font-size: 12px; color: rgba(255,255,255,0.15); }
+
+  /* WHATSAPP BUBBLE */
+  .wa-bubble {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    cursor: pointer; z-index: 99;
+    transition: transform 0.3s;
+    text-decoration: none;
+  }
+  .wa-bubble:hover { transform: scale(1.1); }
+  .wa-bubble svg { width: 32px; height: 32px; fill: white; }
+
+  .wa-tooltip {
+    position: fixed; bottom: 100px; right: 28px;
+    background: white; color: #333;
+    padding: 12px 18px; border-radius: 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 99; display: none;
+    max-width: 220px;
+  }
+  .wa-tooltip::after {
+    content: ''; position: absolute; bottom: -8px; right: 24px;
+    width: 16px; height: 16px; background: white;
+    transform: rotate(45deg);
+  }
+
+  /* MODAL T&C */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6); z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal-tc {
+    background: var(--blanco); border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px; padding: 36px;
+    width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto;
+    color: var(--negro);
+  }
+
+  .modal-tc h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 20px;
+    color: var(--naranja);
+  }
+
+  .modal-tc h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 16px; font-weight: 400; color: var(--negro);
+    margin-top: 20px; margin-bottom: 8px;
+  }
+
+  .modal-tc p, .modal-tc li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; color: rgba(0,0,0,0.5);
+    line-height: 1.7; margin-bottom: 8px;
+  }
+
+  .modal-tc ul { padding-left: 20px; margin-bottom: 12px; }
+
+  .modal-tc .close-btn {
+    display: inline-block; margin-top: 24px;
+    background: var(--naranja); color: var(--blanco);
+    padding: 12px 30px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    border: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .kit-section { flex-direction: column; text-align: center; gap: 16px; }
+    .plan-card.destacado { transform: scale(1); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">encocados</div>
+  <div class="nav-links">
+    <a href="#como">Como funciona</a>
+    <a href="#incluye">Que incluye</a>
+    <a href="#planes">Planes</a>
+    <a href="#eco">Eco</a>
+    <a href="#" onclick="openTC(); return false;">Terminos</a>
+    <a href="#contacto" class="nav-cta">Quiero mi plan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-brand">encocados</div>
+    <div class="hero-tagline">tu almuerzo de chef, en coca</div>
+    <p class="hero-desc">
+      Un chef profesional cocina tu almuerzo de lunes a viernes. Llega listo en cocas reutilizables. Solo abres, comes y disfrutas. Sin cocinar, sin empacar, sin desechables.
+    </p>
+    <a href="#contacto" class="hero-cta">Quiero mi plan semanal</a>
+    <div class="hero-tags">
+      <span class="hero-tag">Sopa + Ensalada + Seco + Bebida</span>
+      <span class="hero-tag">Cocas Reutilizables</span>
+      <span class="hero-tag">Domicilio Gratis</span>
+      <span class="hero-tag">Cero Desechables</span>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="section-label">Asi de facil</div>
+  <h2 class="section-title">Como funciona?</h2>
+  <div class="section-sub">Olvida cocinar, empacar y lavar. Nosotros nos encargamos de todo.</div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Elige tu plan</h3>
+      <p>Semanal, quincenal o mensual. Escogemos juntos la mejor opcion para ti.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Recibe tu kit de cocas</h3>
+      <p>Te entregamos 2 juegos de cocas reutilizables, cubiertos y bolsa de tela. Son tuyas para siempre.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Tu almuerzo llega cada dia</h3>
+      <p>De lunes a viernes recibes tu almuerzo de chef: sopa + ensalada + plato fuerte + bebida.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Comes y devuelves</h3>
+      <p>Disfrutas tu almuerzo, lavas tu coca y al dia siguiente la devuelves cuando llegue la nueva.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUE INCLUYE -->
+<section class="incluye-section" id="incluye">
+  <div class="section-label">Tu almuerzo diario</div>
+  <h2 class="section-title">Que incluye cada coca?</h2>
+  <div class="section-sub">Cada dia recibes un almuerzo completo, con menu diferente, preparado por un chef.</div>
+
+  <div class="incluye-grid">
+    <div class="incluye-card">
+      <div class="incluye-icon">🥣</div>
+      <div>
+        <h3>Sopa o Crema</h3>
+        <p>Crema de ahuyama, sopa de guineo, crema de tomate asado... cada dia algo diferente y reconfortante.</p>
+      </div>
+    </div>
+    <div class="incluye-card">
+      <div class="incluye-icon">🥗</div>
+      <div>
+        <h3>Ensalada Fresca</h3>
+        <p>Ensaladas con nombre propio: Dulce Tropical, Mexicana, del Chef, Fresca Tropical. Frescas y llenas de sabor.</p>
+      </div>
+    </div>
+    <div class="incluye-card">
+      <div class="incluye-icon">🍖</div>
+      <div>
+        <h3>Plato Fuerte de Chef</h3>
+        <p>Lomo de cerdo, ceviche de chicharron, lasagna gratinada, costilla glaseada en BBQ... platos que no haces en casa.</p>
+      </div>
+    </div>
+    <div class="incluye-card">
+      <div class="incluye-icon">🥤</div>
+      <div>
+        <h3>Bebida</h3>
+        <p>Guandolo, jugo de frutos rojos, frutos amarillos, limonada de cereza. Siempre diferente, siempre delicioso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDER FOTOS -->
+<section class="slider-section">
+  <div class="section-label">Nuestros platos</div>
+  <h2 class="section-title">Esto es lo que llega en tu coca</h2>
+  <div class="section-sub">Preparados por un chef con tecnica, sabor y dedicacion. Cada dia un plato diferente.</div>
+
+  <div class="slider-track">
+    <div class="slider-item"><img src="media/DSC03418.jpg" alt="Ceviche de chicharron"></div>
+    <div class="slider-item"><video src="media/C2585.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03432.jpg" alt="Costilla y cocas"></div>
+    <div class="slider-item"><video src="media/C2678.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03427.jpg" alt="Pollo adobado"></div>
+    <div class="slider-item"><video src="media/C2600.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03436.jpg" alt="Lasagna gratinada"></div>
+    <div class="slider-item"><video src="media/C2610.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03416.jpg" alt="Ceviche plato"></div>
+    <div class="slider-item"><video src="media/C2620.mp4" autoplay muted loop playsinline></video></div>
+    <!-- Duplicados para loop -->
+    <div class="slider-item"><img src="media/DSC03418.jpg" alt="Ceviche"></div>
+    <div class="slider-item"><video src="media/C2585.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03432.jpg" alt="Costilla"></div>
+    <div class="slider-item"><video src="media/C2678.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03427.jpg" alt="Pollo"></div>
+    <div class="slider-item"><video src="media/C2600.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03436.jpg" alt="Lasagna"></div>
+    <div class="slider-item"><video src="media/C2610.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03416.jpg" alt="Ceviche"></div>
+    <div class="slider-item"><video src="media/C2620.mp4" autoplay muted loop playsinline></video></div>
+  </div>
+</section>
+
+<!-- PLANES -->
+<section class="planes" id="planes">
+  <div class="section-label">Nuestros planes</div>
+  <h2 class="section-title">Elige el tuyo</h2>
+  <div class="section-sub">Todos incluyen sopa + ensalada + plato fuerte + bebida + domicilio gratis.</div>
+
+  <div class="planes-grid">
+    <div class="plan-card">
+      <div class="plan-name">Semanal</div>
+      <div class="plan-dias">5 almuerzos — Lunes a Viernes</div>
+      <div class="plan-price">$90.000</div>
+      <div class="plan-per">$18.000 / almuerzo</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Sopa + ensalada + seco + bebida</li>
+        <li>Menu de chef diferente cada dia</li>
+        <li>Domicilio gratis</li>
+        <li>Cocas reutilizables</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Elegir plan</a>
+    </div>
+
+    <div class="plan-card destacado">
+      <div class="plan-popular">Mas popular</div>
+      <div class="plan-name">Quincenal</div>
+      <div class="plan-dias">10 almuerzos — 2 semanas</div>
+      <div class="plan-price">$170.000</div>
+      <div class="plan-per">$17.000 / almuerzo</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Todo lo del plan semanal</li>
+        <li>Dias premium incluidos</li>
+        <li>Domicilio gratis</li>
+        <li>Cero desechables</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Elegir plan</a>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-name">Mensual</div>
+      <div class="plan-dias">20 almuerzos — 4 semanas</div>
+      <div class="plan-price">$320.000</div>
+      <div class="plan-per">$16.000 / almuerzo</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>El mejor precio por almuerzo</li>
+        <li>Cero desechables</li>
+        <li>Domicilio gratis</li>
+        <li>Menu de chef diario</li>
+      </ul>
+      <a href="#contacto" class="plan-btn">Elegir plan</a>
+    </div>
+  </div>
+
+  <div class="kit-section">
+    <div class="kit-info">
+      <h3>Kit de Cocas Reutilizables</h3>
+      <p>2 cocas seco + 2 sopa + 2 ensalada + 2 botellas jugo + cubiertos + 2 bolsas de tela</p>
+      <p style="font-size:13px; color:var(--naranja); margin-top:4px;">Compra unica — es tuyo para siempre</p>
+    </div>
+    <div class="kit-price">$80.000</div>
+  </div>
+</section>
+
+<!-- ECO -->
+<section class="eco" id="eco">
+  <div class="section-label">Cero desechables</div>
+  <h2 class="section-title">Cuidamos el planeta contigo</h2>
+  <div class="section-sub">Cada almuerzo en icopor genera 4 desechables a la basura. Con encocados eso no pasa.</div>
+
+  <div class="eco-grid">
+    <div class="eco-card">
+      <div class="eco-icon">♻️</div>
+      <h3>Cocas reutilizables</h3>
+      <p>Tus cocas van y vuelven. Nada de plastico, icopor ni bolsas de un solo uso.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🌿</div>
+      <h3>Sin icopor</h3>
+      <p>Cero cajas de icopor. Cero cubiertos plasticos. Cero bolsas.</p>
+    </div>
+    <div class="eco-card">
+      <div class="eco-icon">🌍</div>
+      <h3>Impacto real</h3>
+      <p>Con 20 clientes ahorramos mas de 1.600 desechables al mes que no van a la basura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <h2>Listo para encocarte?</h2>
+  <p>Escribenos por WhatsApp y empieza a recibir tu almuerzo de chef la proxima semana.</p>
+  <a href="#" class="cta-final-btn" id="ctaWA" target="_blank">Escribir por WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">encocados</div>
+  <div class="footer-tagline">tu almuerzo de chef, en coca</div>
+  <div class="footer-links">
+    <a href="#como">Como funciona</a>
+    <a href="#planes">Planes</a>
+    <a href="#eco">Eco</a>
+    <a href="#" onclick="openTC(); return false;">Terminos y condiciones</a>
+  </div>
+  <p class="footer-copy">© 2026 encocados. Todos los derechos reservados.</p>
+</footer>
+
+<!-- WHATSAPP BUBBLE -->
+<div class="wa-tooltip" id="waTooltip">Hola! Quieres info sobre el plan de almuerzos? Escribenos!</div>
+<a href="#" class="wa-bubble" target="_blank" id="waBubble">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL TERMINOS -->
+<div class="modal-overlay" id="tcModal">
+  <div class="modal-tc">
+    <h2>Terminos y Condiciones</h2>
+
+    <h3>1. El Servicio</h3>
+    <p>encocados es un servicio de almuerzos por suscripcion que opera de lunes a viernes. Cada almuerzo incluye sopa o crema, ensalada, plato fuerte y bebida, servidos en cocas reutilizables.</p>
+
+    <h3>2. Planes y Pagos</h3>
+    <ul>
+      <li>Plan Semanal: $90.000 (5 almuerzos)</li>
+      <li>Plan Quincenal: $170.000 (10 almuerzos)</li>
+      <li>Plan Mensual: $320.000 (20 almuerzos)</li>
+    </ul>
+    <p>El pago se realiza por anticipado via transferencia Bancolombia o Nequi. El plan inicia el lunes siguiente al pago.</p>
+
+    <h3>3. Kit de Cocas</h3>
+    <p>Cada cliente debe adquirir un kit de cocas reutilizables por $80.000 (compra unica). El kit incluye: 2 cocas de vidrio para seco, 2 para sopa, 2 para ensalada, 2 botellas de vidrio para jugo, 1 juego de cubiertos reutilizables y 2 bolsas de tela.</p>
+
+    <h3>4. Responsabilidad del Cliente</h3>
+    <ul>
+      <li>Las cocas son propiedad del cliente y es su responsabilidad cuidarlas.</li>
+      <li>El cliente debe entregar las cocas <strong>limpias, secas y lavadas</strong> al momento de recibir el almuerzo del dia siguiente.</li>
+      <li>Si una coca se rompe o se dana, el reemplazo tiene costo adicional.</li>
+    </ul>
+
+    <h3>5. Cobertura y Entregas</h3>
+    <ul>
+      <li>La cobertura del servicio es en la <strong>zona urbana del municipio de Bello.</strong></li>
+      <li>Las entregas se realizan de lunes a viernes segun la ruta establecida.</li>
+      <li>El almuerzo puede llegar entre las <strong>11:30 am y la 1:30 pm</strong> dependiendo de la ruta.</li>
+      <li>El domicilio esta incluido en el precio del plan dentro de la zona de cobertura, sin costo adicional.</li>
+      <li>Si requieres un horario especifico, podemos revisar tu caso y darte una respuesta.</li>
+      <li>Para zonas fuera de la cobertura urbana de Bello, se puede cotizar el servicio con un valor adicional de domicilio.</li>
+      <li>El cliente debe estar disponible en la direccion registrada. Si no se encuentra, no se reprograman entregas para ese dia.</li>
+    </ul>
+
+    <h3>6. Menu</h3>
+    <p>El menu cambia cada semana y se publica en nuestras redes sociales. encocados se reserva el derecho de hacer ajustes al menu por disponibilidad de ingredientes, informando previamente al cliente.</p>
+
+    <h3>7. Alergias, Restricciones y Planes Personalizados</h3>
+    <p>El cliente debe informar alergias o restricciones alimentarias al momento de la inscripcion. encocados no garantiza la ausencia de alimentos diferentes a las alergias reportadas por el cliente.</p>
+    <p>Si tienes muchas restricciones alimentarias o necesitas una personalizacion especial de tu coca, pregunta por nuestros <strong>planes personalizados</strong> con menu adaptado a tus necesidades.</p>
+
+    <h3>8. Cancelaciones y Pausas</h3>
+    <ul>
+      <li>El cliente puede pausar su plan con minimo 3 dias de anticipacion.</li>
+      <li>No se realizan devoluciones de dinero por dias no consumidos sin aviso previo.</li>
+      <li>Para cancelar la suscripcion, el cliente debe notificar antes del inicio de la nueva semana.</li>
+    </ul>
+
+    <h3>9. Renovacion</h3>
+    <p>Los planes no se renuevan automaticamente. El cliente debe confirmar y pagar la renovacion antes del viernes de cada semana.</p>
+
+    <button class="close-btn" onclick="closeTC()">Entendido</button>
+  </div>
+</div>
+
+<script>
+  var waMsg = encodeURIComponent('Hola, estoy interesad@ en los planes para las cocas del almuerzo!');
+  var waUrl = 'https://wa.me/573117574810?text=' + waMsg;
+  document.getElementById('ctaWA').href = waUrl;
+  document.getElementById('waBubble').href = waUrl;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.play();
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('video').forEach(function(v) {
+    v.play().catch(function(){});
+    observer.observe(v);
+  });
+
+  setTimeout(() => {
+    document.getElementById('waTooltip').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('waTooltip').style.display = 'none';
+    }, 5000);
+  }, 3000);
+
+  function openTC() {
+    document.getElementById('tcModal').classList.add('show');
+  }
+  function closeTC() {
+    document.getElementById('tcModal').classList.remove('show');
+  }
+  document.getElementById('tcModal').addEventListener('click', function(e) {
+    if (e.target === this) closeTC();
+  });
+</script>
+
+</body>
+</html>
