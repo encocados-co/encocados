@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENCOCADOS — Tu almuerzo de chef, en coca</title>
+<title>encocados — Tu almuerzo de chef, en coca</title>
 <link rel="icon" type="image/png" href="encocados-icon.png">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Patrick+Hand&family=Lilita+One&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
   :root {
+    --crema: #FFF0DC;
+    --crema-claro: #FFF8EE;
+    --naranja: #E5461A;
+    --naranja-dark: #C73A14;
+    --naranja-glow: rgba(229,70,26,0.1);
+    --durazno: #F5CA85;
+    --durazno-claro: #FAE0B5;
+    --lavanda: #BCC2DC;
+    --lavanda-claro: #D8DCE9;
+    --blanco: #FFFFFF;
     --negro: #1A1A1A;
     --negro2: #0A0A0A;
-    --menta: #00D4AA;
-    --menta-dark: #00A888;
-    --menta-glow: rgba(0,212,170,0.1);
-    --terracota: #C4704B;
-    --crema: #FDF6EC;
-    --dorado: #C9A96E;
-    --blanco: #FFFFFF;
     --gris: #888;
   }
 
@@ -25,38 +28,39 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
-    background: var(--negro);
-    color: var(--crema);
+    font-family: 'Quicksand', sans-serif;
+    background: var(--crema);
+    color: var(--negro);
   }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(26,26,26,0.95);
+    background: rgba(255,240,220,0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
     padding: 16px 40px;
     display: flex; align-items: center; justify-content: space-between;
     z-index: 100;
   }
 
   .nav-logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 22px; font-weight: 900; letter-spacing: 3px;
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: 22px; color: var(--naranja);
   }
-  .nav-logo .o { color: var(--terracota); }
 
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a {
-    color: rgba(255,255,255,0.5); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color 0.3s;
+    color: rgba(0,0,0,0.4); text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 600; transition: color 0.3s;
   }
-  .nav-links a:hover { color: var(--menta); }
+  .nav-links a:hover { color: var(--naranja); }
 
   .nav-cta {
-    background: var(--menta); color: var(--negro);
+    background: var(--naranja); color: var(--blanco);
     padding: 10px 24px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
     font-size: 14px; font-weight: 700; text-decoration: none;
     transition: transform 0.3s;
   }
@@ -65,7 +69,7 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    background: linear-gradient(170deg, var(--menta) 0%, #008F72 25%, var(--negro) 55%, var(--negro2) 100%);
+    background: linear-gradient(170deg, var(--naranja) 0%, #D03A10 25%, var(--crema) 60%, var(--crema-claro) 100%);
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 120px 40px 80px;
   }
@@ -73,35 +77,36 @@
   .hero-content { max-width: 800px; }
 
   .hero-brand {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(48px, 8vw, 80px);
-    font-weight: 900; letter-spacing: 6px; line-height: 1;
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: clamp(48px, 8vw, 84px);
+    color: var(--blanco); line-height: 1;
   }
-  .hero-brand .o { color: var(--terracota); }
 
   .hero-tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Patrick Hand', cursive;
     font-size: clamp(20px, 3vw, 28px);
-    font-style: italic; color: var(--dorado);
+    color: var(--crema);
     margin-top: 10px;
   }
 
   .hero-desc {
+    font-family: 'Quicksand', sans-serif;
     font-size: clamp(16px, 2vw, 20px);
-    color: rgba(255,255,255,0.5); line-height: 1.7;
+    color: rgba(0,0,0,0.45); line-height: 1.7;
     margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto;
   }
 
   .hero-cta {
     display: inline-block; margin-top: 36px;
-    background: var(--menta); color: var(--negro);
+    background: var(--naranja); color: var(--blanco);
     padding: 16px 40px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
     font-size: 18px; font-weight: 700; text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
   }
   .hero-cta:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(0,212,170,0.3);
+    box-shadow: 0 8px 30px rgba(229,70,26,0.3);
   }
 
   .hero-tags {
@@ -109,43 +114,39 @@
     flex-wrap: wrap; margin-top: 28px;
   }
   .hero-tag {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+    background: var(--blanco); border: 1px solid rgba(0,0,0,0.06);
     padding: 8px 20px; border-radius: 50px;
-    font-size: 13px; color: rgba(255,255,255,0.5);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px; color: rgba(0,0,0,0.45); font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
 
   /* SECTIONS */
   section { padding: 80px 40px; }
 
   .section-label {
+    font-family: 'Quicksand', sans-serif;
     font-size: 12px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 4px; color: var(--menta); margin-bottom: 10px;
+    letter-spacing: 4px; color: var(--naranja); margin-bottom: 10px;
     text-align: center;
   }
 
   .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(30px, 4vw, 46px); font-weight: 900;
+    font-family: 'Lilita One', sans-serif;
+    font-size: clamp(30px, 4vw, 46px); font-weight: 400;
     text-align: center; margin-bottom: 16px; line-height: 1.2;
+    color: var(--negro);
   }
 
   .section-sub {
-    font-size: 16px; color: rgba(255,255,255,0.4);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px; color: rgba(0,0,0,0.4);
     text-align: center; max-width: 600px;
     margin: 0 auto 40px; line-height: 1.7;
   }
 
-  /* SECCIONES CLARAS */
-  .light {
-    background: var(--crema);
-    color: var(--negro);
-  }
-  .light .section-label { color: var(--menta); }
-  .light .section-title { color: var(--negro); }
-  .light .section-sub { color: #777; }
-
   /* COMO FUNCIONA */
-  .como { background: var(--crema); color: var(--negro); }
+  .como { background: var(--blanco); color: var(--negro); }
 
   .steps-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -153,329 +154,63 @@
   }
 
   .step-card {
-    background: var(--blanco);
-    border: 1px solid rgba(0,0,0,0.06);
+    background: var(--crema-claro);
+    border: 1px solid rgba(0,0,0,0.04);
     border-radius: 20px; padding: 30px; text-align: center;
     transition: transform 0.3s;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
   }
   .step-card:hover { transform: translateY(-4px); }
 
   .step-num {
     width: 50px; height: 50px; border-radius: 50%;
-    background: var(--menta); color: var(--negro);
-    font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900;
+    background: var(--naranja); color: var(--blanco);
+    font-family: 'Lilita One', sans-serif; font-size: 22px;
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 16px;
   }
 
   .step-card h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 20px; font-weight: 800; margin-bottom: 8px;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 20px; font-weight: 400; margin-bottom: 8px;
     color: var(--negro);
   }
 
-  .step-card p { font-size: 15px; color: #777; line-height: 1.6; }
+  .step-card p { font-family: 'Quicksand', sans-serif; font-size: 15px; color: rgba(0,0,0,0.45); line-height: 1.6; }
 
   /* QUE INCLUYE */
+  .incluye-section { background: var(--naranja); color: var(--blanco); }
+  .incluye-section .section-label { color: var(--crema); }
+  .incluye-section .section-title { color: var(--blanco); }
+  .incluye-section .section-sub { color: rgba(255,255,255,0.6); }
+
   .incluye-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px; max-width: 1000px; margin: 0 auto;
   }
 
   .incluye-card {
-    background: rgba(255,255,255,0.95);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 20px; padding: 28px;
     display: flex; gap: 16px; align-items: flex-start;
     transition: transform 0.3s;
+    backdrop-filter: blur(4px);
   }
-  .incluye-card:hover { transform: translateY(-4px); }
+  .incluye-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.2); }
 
   .incluye-icon { font-size: 32px; flex-shrink: 0; }
   .incluye-card h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px; font-weight: 800; color: var(--negro);
+    font-family: 'Lilita One', sans-serif;
+    font-size: 18px; font-weight: 400; color: var(--blanco);
     margin-bottom: 4px;
   }
-  .incluye-card p { font-size: 14px; color: #666; line-height: 1.5; }
-
-  /* PLANES */
-  .planes { background: var(--crema); color: var(--negro); }
-  .planes .section-title { color: var(--negro); }
-  .planes .section-sub { color: #777; }
-
-  .planes-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; max-width: 1000px; margin: 0 auto;
-  }
-
-  .plan-card {
-    background: rgba(255,255,255,0.95);
-    border-radius: 24px; padding: 36px 28px;
-    text-align: center; position: relative;
-    transition: transform 0.3s;
-  }
-  .plan-card:hover { transform: translateY(-4px); }
-
-  .plan-card.destacado {
-    border: 3px solid var(--menta);
-    transform: scale(1.03);
-  }
-  .plan-card.destacado:hover { transform: scale(1.05); }
-
-  .plan-popular {
-    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-    background: var(--menta); color: var(--negro);
-    font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
-    padding: 5px 18px; border-radius: 20px; text-transform: uppercase;
-  }
-
-  .plan-name {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px; font-weight: 900; letter-spacing: 2px;
-    margin-bottom: 4px;
-  }
-
-  .plan-card:nth-child(1) .plan-name { color: var(--menta); }
-  .plan-card:nth-child(2) .plan-name { color: var(--dorado); }
-  .plan-card:nth-child(3) .plan-name { color: var(--terracota); }
-
-  .plan-dias { font-size: 14px; color: #999; margin-bottom: 16px; }
-
-  .plan-price {
-    font-family: 'Outfit', sans-serif;
-    font-size: 42px; font-weight: 900; color: var(--negro);
-  }
-
-  .plan-per { font-size: 13px; color: #999; margin-bottom: 20px; }
-
-  .plan-divider { width: 40px; height: 2px; background: rgba(0,0,0,0.06); margin: 0 auto 20px; }
-
-  .plan-features { list-style: none; text-align: left; display: grid; gap: 8px; }
-  .plan-features li {
-    font-size: 14px; color: #555; padding-left: 24px; position: relative;
-  }
-  .plan-features li::before {
-    content: '✓'; position: absolute; left: 0;
-    color: var(--menta); font-weight: 900;
-  }
-
-  .plan-btn {
-    display: inline-block; margin-top: 24px;
-    padding: 12px 30px; border-radius: 50px;
-    font-size: 14px; font-weight: 700; text-decoration: none;
-    transition: transform 0.3s;
-  }
-
-  .plan-card:nth-child(1) .plan-btn { background: rgba(0,212,170,0.1); color: var(--menta); }
-  .plan-card:nth-child(2) .plan-btn { background: var(--menta); color: var(--negro); }
-  .plan-card:nth-child(3) .plan-btn { background: rgba(196,112,75,0.1); color: var(--terracota); }
-  .plan-btn:hover { transform: scale(1.05); }
-
-  /* KIT */
-  .kit-section {
-    max-width: 800px; margin: 40px auto 0;
-    background: var(--blanco);
-    border: 2px solid rgba(0,212,170,0.2);
-    border-radius: 20px; padding: 30px 36px;
-    display: flex; align-items: center; justify-content: space-between;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-  }
-
-  .kit-info h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 20px; font-weight: 800; color: var(--negro);
-  }
-  .kit-info p { font-size: 14px; color: #777; margin-top: 4px; }
-  .kit-price {
-    font-family: 'Outfit', sans-serif;
-    font-size: 32px; font-weight: 900; color: var(--menta);
-  }
-
-  /* ECO */
-  .eco { background: var(--blanco); color: var(--negro); }
-  .eco .section-title { color: var(--negro); }
-  .eco .section-sub { color: #777; }
-
-  .eco-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px; max-width: 900px; margin: 0 auto;
-  }
-
-  .eco-card {
-    text-align: center; padding: 30px;
-    background: rgba(0,212,170,0.06);
-    border: 1px solid rgba(0,212,170,0.15);
-    border-radius: 20px;
-  }
-
-  .eco-icon { font-size: 40px; margin-bottom: 12px; }
-  .eco-card h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 18px; font-weight: 800; color: var(--negro); margin-bottom: 6px;
-  }
-  .eco-card p { font-size: 14px; color: #777; line-height: 1.5; }
-
-  /* CTA FINAL */
-  .cta-final {
-    background: linear-gradient(135deg, var(--menta), #008F72);
-    text-align: center; padding: 80px 40px;
-  }
-
-  .cta-final h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 42px); font-weight: 900;
-    color: var(--negro); margin-bottom: 12px;
-  }
-
-  .cta-final p {
-    font-size: 18px; color: rgba(0,0,0,0.5);
-    max-width: 500px; margin: 0 auto 30px; line-height: 1.6;
-  }
-
-  .cta-final-btn {
-    display: inline-block;
-    background: var(--negro); color: var(--crema);
-    padding: 16px 40px; border-radius: 50px;
-    font-size: 18px; font-weight: 700; text-decoration: none;
-    transition: transform 0.3s;
-  }
-  .cta-final-btn:hover { transform: scale(1.05); }
-
-  /* FOOTER */
-  footer {
-    background: var(--negro2); padding: 40px;
-    text-align: center; border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .footer-logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px; font-weight: 900; letter-spacing: 4px;
-    margin-bottom: 8px;
-  }
-  .footer-logo .o { color: var(--terracota); }
-
-  .footer-tagline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16px; font-style: italic; color: var(--dorado);
-    margin-bottom: 20px;
-  }
-
-  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 20px; }
-  .footer-links a {
-    color: rgba(255,255,255,0.3); text-decoration: none;
-    font-size: 13px; transition: color 0.3s;
-  }
-  .footer-links a:hover { color: var(--menta); }
-
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
-
-  /* WHATSAPP BUBBLE */
-  .wa-bubble {
-    position: fixed; bottom: 28px; right: 28px;
-    width: 64px; height: 64px; border-radius: 50%;
-    background: #25D366;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    cursor: pointer; z-index: 99;
-    transition: transform 0.3s;
-    text-decoration: none;
-  }
-  .wa-bubble:hover { transform: scale(1.1); }
-  .wa-bubble svg { width: 32px; height: 32px; fill: white; }
-
-  .wa-tooltip {
-    position: fixed; bottom: 100px; right: 28px;
-    background: white; color: #333;
-    padding: 12px 18px; border-radius: 12px;
-    font-size: 14px; font-weight: 600;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    z-index: 99; display: none;
-    max-width: 220px;
-  }
-  .wa-tooltip::after {
-    content: ''; position: absolute; bottom: -8px; right: 24px;
-    width: 16px; height: 16px; background: white;
-    transform: rotate(45deg);
-  }
-
-  /* MODAL T&C */
-  .modal-overlay {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.8); z-index: 200;
-    align-items: center; justify-content: center;
-  }
-  .modal-overlay.show { display: flex; }
-
-  .modal-tc {
-    background: var(--negro); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px; padding: 36px;
-    width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto;
-  }
-
-  .modal-tc h2 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px; font-weight: 900; margin-bottom: 20px;
-    color: var(--menta);
-  }
-
-  .modal-tc h3 {
-    font-size: 16px; font-weight: 700; color: var(--crema);
-    margin-top: 20px; margin-bottom: 8px;
-  }
-
-  .modal-tc p, .modal-tc li {
-    font-size: 14px; color: rgba(255,255,255,0.5);
-    line-height: 1.7; margin-bottom: 8px;
-  }
-
-  .modal-tc ul { padding-left: 20px; margin-bottom: 12px; }
-
-  .modal-tc .close-btn {
-    display: inline-block; margin-top: 24px;
-    background: var(--menta); color: var(--negro);
-    padding: 12px 30px; border-radius: 50px;
-    font-size: 14px; font-weight: 700; cursor: pointer;
-    border: none; font-family: 'Inter', sans-serif;
-  }
-
-  /* FOOD PHOTOS */
-  .food-img {
-    filter: brightness(1.15) contrast(1.1) saturate(1.25) warmth(1);
-    -webkit-filter: brightness(1.15) contrast(1.1) saturate(1.25);
-  }
-
-  /* HERO IMAGE */
-  .hero-food {
-    max-width: 900px; margin: 40px auto 0;
-    border-radius: 24px; overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    position: relative;
-  }
-
-  .hero-food img {
-    width: 100%; height: 400px; object-fit: cover;
-    filter: brightness(1.05) contrast(1.15) saturate(1.4) sepia(0.08);
-    display: block;
-  }
-
-  .hero-food-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
-    padding: 30px;
-  }
-
-  .hero-food-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px; font-weight: 900; color: white;
-  }
-
-  .hero-food-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+  .incluye-card p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.5; }
 
   /* SLIDER */
   .slider-section {
     padding: 60px 0 80px;
-    background: var(--negro);
+    background: var(--crema);
     overflow: hidden;
   }
 
@@ -504,6 +239,7 @@
     border-radius: 20px;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
 
   .slider-item img, .slider-item video {
@@ -523,12 +259,262 @@
   }
 
   .s-overlay-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 16px; font-weight: 800; color: white;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 16px; font-weight: 400; color: white;
   }
 
   .s-overlay-sub {
+    font-family: 'Quicksand', sans-serif;
     font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px;
+  }
+
+  /* PLANES */
+  .planes { background: var(--blanco); color: var(--negro); }
+
+  .planes-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; max-width: 1000px; margin: 0 auto;
+  }
+
+  .plan-card {
+    background: var(--crema-claro);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 24px; padding: 36px 28px;
+    text-align: center; position: relative;
+    transition: transform 0.3s;
+  }
+  .plan-card:hover { transform: translateY(-4px); }
+
+  .plan-card.destacado {
+    border: 3px solid var(--naranja);
+    transform: scale(1.03);
+    background: var(--blanco);
+  }
+  .plan-card.destacado:hover { transform: scale(1.05); }
+
+  .plan-popular {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--naranja); color: var(--blanco);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11px; font-weight: 800; letter-spacing: 1.5px;
+    padding: 5px 18px; border-radius: 20px; text-transform: uppercase;
+  }
+
+  .plan-name {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 24px; font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .plan-card:nth-child(1) .plan-name { color: var(--naranja); }
+  .plan-card:nth-child(2) .plan-name { color: var(--naranja); }
+  .plan-card:nth-child(3) .plan-name { color: var(--naranja); }
+
+  .plan-dias { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.35); margin-bottom: 16px; }
+
+  .plan-price {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 42px; font-weight: 400; color: var(--negro);
+  }
+
+  .plan-per { font-family: 'Quicksand', sans-serif; font-size: 13px; color: rgba(0,0,0,0.35); margin-bottom: 20px; }
+
+  .plan-divider { width: 40px; height: 2px; background: var(--durazno); margin: 0 auto 20px; }
+
+  .plan-features { list-style: none; text-align: left; display: grid; gap: 8px; }
+  .plan-features li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; color: rgba(0,0,0,0.5); padding-left: 24px; position: relative;
+  }
+  .plan-features li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--naranja); font-weight: 900;
+  }
+
+  .plan-btn {
+    display: inline-block; margin-top: 24px;
+    padding: 12px 30px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s;
+  }
+
+  .plan-card:nth-child(1) .plan-btn { background: var(--naranja-glow); color: var(--naranja); }
+  .plan-card:nth-child(2) .plan-btn { background: var(--naranja); color: var(--blanco); }
+  .plan-card:nth-child(3) .plan-btn { background: var(--naranja-glow); color: var(--naranja); }
+  .plan-btn:hover { transform: scale(1.05); }
+
+  /* KIT */
+  .kit-section {
+    max-width: 800px; margin: 40px auto 0;
+    background: var(--crema-claro);
+    border: 2px solid var(--durazno);
+    border-radius: 20px; padding: 30px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  .kit-info h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 20px; font-weight: 400; color: var(--negro);
+  }
+  .kit-info p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.4); margin-top: 4px; }
+  .kit-price {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 32px; font-weight: 400; color: var(--naranja);
+  }
+
+  /* ECO */
+  .eco { background: var(--lavanda-claro); color: var(--negro); }
+
+  .eco-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; max-width: 900px; margin: 0 auto;
+  }
+
+  .eco-card {
+    text-align: center; padding: 30px;
+    background: var(--blanco);
+    border: 1px solid rgba(0,0,0,0.04);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+
+  .eco-icon { font-size: 40px; margin-bottom: 12px; }
+  .eco-card h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 18px; font-weight: 400; color: var(--negro); margin-bottom: 6px;
+  }
+  .eco-card p { font-family: 'Quicksand', sans-serif; font-size: 14px; color: rgba(0,0,0,0.4); line-height: 1.5; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, var(--naranja), var(--naranja-dark));
+    text-align: center; padding: 80px 40px;
+  }
+
+  .cta-final h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: clamp(28px, 4vw, 42px); font-weight: 400;
+    color: var(--blanco); margin-bottom: 12px;
+  }
+
+  .cta-final p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; color: rgba(255,255,255,0.6);
+    max-width: 500px; margin: 0 auto 30px; line-height: 1.6;
+  }
+
+  .cta-final-btn {
+    display: inline-block;
+    background: var(--blanco); color: var(--naranja);
+    padding: 16px 40px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px; font-weight: 700; text-decoration: none;
+    transition: transform 0.3s;
+  }
+  .cta-final-btn:hover { transform: scale(1.05); }
+
+  /* FOOTER */
+  footer {
+    background: var(--negro); padding: 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Darumadrop One', sans-serif;
+    font-size: 24px; color: var(--crema);
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 16px; color: var(--naranja);
+    margin-bottom: 20px;
+  }
+
+  .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 20px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.3); text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13px; font-weight: 600; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--naranja); }
+
+  .footer-copy { font-family: 'Quicksand', sans-serif; font-size: 12px; color: rgba(255,255,255,0.15); }
+
+  /* WHATSAPP BUBBLE */
+  .wa-bubble {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    cursor: pointer; z-index: 99;
+    transition: transform 0.3s;
+    text-decoration: none;
+  }
+  .wa-bubble:hover { transform: scale(1.1); }
+  .wa-bubble svg { width: 32px; height: 32px; fill: white; }
+
+  .wa-tooltip {
+    position: fixed; bottom: 100px; right: 28px;
+    background: white; color: #333;
+    padding: 12px 18px; border-radius: 12px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 99; display: none;
+    max-width: 220px;
+  }
+  .wa-tooltip::after {
+    content: ''; position: absolute; bottom: -8px; right: 24px;
+    width: 16px; height: 16px; background: white;
+    transform: rotate(45deg);
+  }
+
+  /* MODAL T&C */
+  .modal-overlay {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6); z-index: 200;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+
+  .modal-tc {
+    background: var(--blanco); border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 20px; padding: 36px;
+    width: 90%; max-width: 700px; max-height: 85vh; overflow-y: auto;
+    color: var(--negro);
+  }
+
+  .modal-tc h2 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 24px; font-weight: 400; margin-bottom: 20px;
+    color: var(--naranja);
+  }
+
+  .modal-tc h3 {
+    font-family: 'Lilita One', sans-serif;
+    font-size: 16px; font-weight: 400; color: var(--negro);
+    margin-top: 20px; margin-bottom: 8px;
+  }
+
+  .modal-tc p, .modal-tc li {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; color: rgba(0,0,0,0.5);
+    line-height: 1.7; margin-bottom: 8px;
+  }
+
+  .modal-tc ul { padding-left: 20px; margin-bottom: 12px; }
+
+  .modal-tc .close-btn {
+    display: inline-block; margin-top: 24px;
+    background: var(--naranja); color: var(--blanco);
+    padding: 12px 30px; border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    border: none;
   }
 
   /* RESPONSIVE */
@@ -546,7 +532,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">ENC<span class="o">O</span>CAD<span class="o">O</span>S</div>
+  <div class="nav-logo">encocados</div>
   <div class="nav-links">
     <a href="#como">Como funciona</a>
     <a href="#incluye">Que incluye</a>
@@ -560,7 +546,7 @@
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-content">
-    <div class="hero-brand">ENC<span class="o">O</span>CAD<span class="o">O</span>S</div>
+    <div class="hero-brand">encocados</div>
     <div class="hero-tagline">tu almuerzo de chef, en coca</div>
     <p class="hero-desc">
       Un chef profesional cocina tu almuerzo de lunes a viernes. Llega listo en cocas reutilizables. Solo abres, comes y disfrutas. Sin cocinar, sin empacar, sin desechables.
@@ -572,7 +558,6 @@
       <span class="hero-tag">Domicilio Gratis</span>
       <span class="hero-tag">Cero Desechables</span>
     </div>
-
   </div>
 </section>
 
@@ -591,7 +576,7 @@
     <div class="step-card">
       <div class="step-num">2</div>
       <h3>Recibe tu kit de cocas</h3>
-      <p>Te entregamos 2 juegos de cocas reutilizables y bolsa de tela. Son tuyas para siempre.</p>
+      <p>Te entregamos 2 juegos de cocas reutilizables, cubiertos y bolsa de tela. Son tuyas para siempre.</p>
     </div>
     <div class="step-card">
       <div class="step-num">3</div>
@@ -607,7 +592,7 @@
 </section>
 
 <!-- QUE INCLUYE -->
-<section id="incluye" style="background:var(--negro); color:var(--crema);">
+<section class="incluye-section" id="incluye">
   <div class="section-label">Tu almuerzo diario</div>
   <h2 class="section-title">Que incluye cada coca?</h2>
   <div class="section-sub">Cada dia recibes un almuerzo completo, con menu diferente, preparado por un chef.</div>
@@ -651,145 +636,27 @@
   <div class="section-sub">Preparados por un chef con tecnica, sabor y dedicacion. Cada dia un plato diferente.</div>
 
   <div class="slider-track">
-    <!-- 1. Ceviche close-up -->
-    <div class="slider-item">
-      <img src="media/DSC03418.jpg" alt="Ceviche de chicharron">
-    </div>
-    <!-- 2. Video cocina -->
-    <div class="slider-item">
-      <video src="media/C2585.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <!-- 3. Cocas cenital costilla -->
-    <div class="slider-item">
-      <img src="media/DSC03432.jpg" alt="Costilla y cocas">
-    </div>
-    <!-- 4. Video -->
-    <div class="slider-item">
-      <video src="media/C2678.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <!-- 5. Close-up pollo pasta -->
-    <div class="slider-item">
-      <img src="media/DSC03427.jpg" alt="Pollo adobado">
-    </div>
-    <!-- 6. Video -->
-    <div class="slider-item">
-      <video src="media/C2600.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <!-- 7. Lasagna + crema tomate -->
-    <div class="slider-item">
-      <img src="media/DSC03436.jpg" alt="Lasagna gratinada">
-    </div>
-    <!-- 8. Video -->
-    <div class="slider-item">
-      <video src="media/C2610.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <!-- 9. Ceviche plato -->
-    <div class="slider-item">
-      <img src="media/DSC03416.jpg" alt="Ceviche plato">
-    </div>
-    <!-- 10. Video -->
-    <div class="slider-item">
-      <video src="media/C2620.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <!-- NUEVOS PLATOS -->
-    <div class="slider-item">
-      <img src="media/enc-01.jpg" alt="Cerdo en salsa con arroz y papas">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-02.jpg" alt="Pollo BBQ desmechado con gratinado">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-03.jpg" alt="Crema con tocineta crocante">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-04.jpg" alt="Pollo en salsa con arroz y maduro">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-05.jpg" alt="Carne al tomate con arroz y papas">
-    </div>
-    <div class="slider-item">
-      <video src="media/enc-vid-01.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-06.jpg" alt="Pincho de pollo con arroz y papa">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-07.jpg" alt="Cerdo relleno en salsa con pure">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-08.jpg" alt="Pollo agridulce con arroz salteado">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-09.jpg" alt="Ensalada fresca con crutones">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-10.jpg" alt="Pasta en salsa con pollo">
-    </div>
-
+    <div class="slider-item"><img src="media/DSC03418.jpg" alt="Ceviche de chicharron"></div>
+    <div class="slider-item"><video src="media/C2585.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03432.jpg" alt="Costilla y cocas"></div>
+    <div class="slider-item"><video src="media/C2678.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03427.jpg" alt="Pollo adobado"></div>
+    <div class="slider-item"><video src="media/C2600.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03436.jpg" alt="Lasagna gratinada"></div>
+    <div class="slider-item"><video src="media/C2610.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03416.jpg" alt="Ceviche plato"></div>
+    <div class="slider-item"><video src="media/C2620.mp4" autoplay muted loop playsinline></video></div>
     <!-- Duplicados para loop -->
-    <div class="slider-item">
-      <img src="media/DSC03418.jpg" alt="Ceviche">
-    </div>
-    <div class="slider-item">
-      <video src="media/C2585.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/DSC03432.jpg" alt="Costilla">
-    </div>
-    <div class="slider-item">
-      <video src="media/C2678.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/DSC03427.jpg" alt="Pollo">
-    </div>
-    <div class="slider-item">
-      <video src="media/C2600.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/DSC03436.jpg" alt="Lasagna">
-    </div>
-    <div class="slider-item">
-      <video src="media/C2610.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/DSC03416.jpg" alt="Ceviche">
-    </div>
-    <div class="slider-item">
-      <video src="media/C2620.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-01.jpg" alt="Cerdo en salsa con arroz y papas">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-02.jpg" alt="Pollo BBQ desmechado con gratinado">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-03.jpg" alt="Crema con tocineta crocante">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-04.jpg" alt="Pollo en salsa con arroz y maduro">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-05.jpg" alt="Carne al tomate con arroz y papas">
-    </div>
-    <div class="slider-item">
-      <video src="media/enc-vid-01.mp4" autoplay muted loop playsinline></video>
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-06.jpg" alt="Pincho de pollo con arroz y papa">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-07.jpg" alt="Cerdo relleno en salsa con pure">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-08.jpg" alt="Pollo agridulce con arroz salteado">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-09.jpg" alt="Ensalada fresca con crutones">
-    </div>
-    <div class="slider-item">
-      <img src="media/enc-10.jpg" alt="Pasta en salsa con pollo">
-    </div>
+    <div class="slider-item"><img src="media/DSC03418.jpg" alt="Ceviche"></div>
+    <div class="slider-item"><video src="media/C2585.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03432.jpg" alt="Costilla"></div>
+    <div class="slider-item"><video src="media/C2678.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03427.jpg" alt="Pollo"></div>
+    <div class="slider-item"><video src="media/C2600.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03436.jpg" alt="Lasagna"></div>
+    <div class="slider-item"><video src="media/C2610.mp4" autoplay muted loop playsinline></video></div>
+    <div class="slider-item"><img src="media/DSC03416.jpg" alt="Ceviche"></div>
+    <div class="slider-item"><video src="media/C2620.mp4" autoplay muted loop playsinline></video></div>
   </div>
 </section>
 
@@ -801,10 +668,10 @@
 
   <div class="planes-grid">
     <div class="plan-card">
-      <div class="plan-name">SEMANAL</div>
+      <div class="plan-name">Semanal</div>
       <div class="plan-dias">5 almuerzos — Lunes a Viernes</div>
-      <div class="plan-price">$85.000</div>
-      <div class="plan-per">$17.000 / almuerzo</div>
+      <div class="plan-price">$90.000</div>
+      <div class="plan-per">$18.000 / almuerzo</div>
       <div class="plan-divider"></div>
       <ul class="plan-features">
         <li>Sopa + ensalada + seco + bebida</li>
@@ -817,7 +684,7 @@
 
     <div class="plan-card destacado">
       <div class="plan-popular">Mas popular</div>
-      <div class="plan-name">QUINCENAL</div>
+      <div class="plan-name">Quincenal</div>
       <div class="plan-dias">10 almuerzos — 2 semanas</div>
       <div class="plan-price">$170.000</div>
       <div class="plan-per">$17.000 / almuerzo</div>
@@ -832,7 +699,7 @@
     </div>
 
     <div class="plan-card">
-      <div class="plan-name">MENSUAL</div>
+      <div class="plan-name">Mensual</div>
       <div class="plan-dias">20 almuerzos — 4 semanas</div>
       <div class="plan-price">$320.000</div>
       <div class="plan-per">$16.000 / almuerzo</div>
@@ -850,8 +717,8 @@
   <div class="kit-section">
     <div class="kit-info">
       <h3>Kit de Cocas Reutilizables</h3>
-      <p>2 cocas seco + 2 sopa + 2 ensalada + 2 botellas jugo + 2 bolsas de tela</p>
-      <p style="font-size:13px; color:var(--dorado); margin-top:4px;">Compra unica — es tuyo para siempre</p>
+      <p>2 cocas seco + 2 sopa + 2 ensalada + 2 botellas jugo + cubiertos + 2 bolsas de tela</p>
+      <p style="font-size:13px; color:var(--naranja); margin-top:4px;">Compra unica — es tuyo para siempre</p>
     </div>
     <div class="kit-price">$80.000</div>
   </div>
@@ -861,7 +728,7 @@
 <section class="eco" id="eco">
   <div class="section-label">Cero desechables</div>
   <h2 class="section-title">Cuidamos el planeta contigo</h2>
-  <div class="section-sub">Cada almuerzo en icopor genera 4 desechables a la basura. Con ENCOCADOS eso no pasa.</div>
+  <div class="section-sub">Cada almuerzo en icopor genera 4 desechables a la basura. Con encocados eso no pasa.</div>
 
   <div class="eco-grid">
     <div class="eco-card">
@@ -891,7 +758,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">ENC<span class="o">O</span>CAD<span class="o">O</span>S</div>
+  <div class="footer-logo">encocados</div>
   <div class="footer-tagline">tu almuerzo de chef, en coca</div>
   <div class="footer-links">
     <a href="#como">Como funciona</a>
@@ -899,7 +766,7 @@
     <a href="#eco">Eco</a>
     <a href="#" onclick="openTC(); return false;">Terminos y condiciones</a>
   </div>
-  <p class="footer-copy">© 2026 ENCOCADOS. Todos los derechos reservados.</p>
+  <p class="footer-copy">© 2026 encocados. Todos los derechos reservados.</p>
 </footer>
 
 <!-- WHATSAPP BUBBLE -->
@@ -914,18 +781,18 @@
     <h2>Terminos y Condiciones</h2>
 
     <h3>1. El Servicio</h3>
-    <p>ENCOCADOS es un servicio de almuerzos por suscripcion que opera de lunes a viernes. Cada almuerzo incluye sopa o crema, ensalada, plato fuerte y bebida, servidos en cocas reutilizables.</p>
+    <p>encocados es un servicio de almuerzos por suscripcion que opera de lunes a viernes. Cada almuerzo incluye sopa o crema, ensalada, plato fuerte y bebida, servidos en cocas reutilizables.</p>
 
     <h3>2. Planes y Pagos</h3>
     <ul>
-      <li>Plan Semanal: $85.000 (5 almuerzos)</li>
+      <li>Plan Semanal: $90.000 (5 almuerzos)</li>
       <li>Plan Quincenal: $170.000 (10 almuerzos)</li>
       <li>Plan Mensual: $320.000 (20 almuerzos)</li>
     </ul>
     <p>El pago se realiza por anticipado via transferencia Bancolombia o Nequi. El plan inicia el lunes siguiente al pago.</p>
 
     <h3>3. Kit de Cocas</h3>
-    <p>Cada cliente debe adquirir un kit de cocas reutilizables por $80.000 (compra unica). El kit incluye: 2 cocas de vidrio para seco, 2 para sopa, 2 para ensalada, 2 botellas de vidrio para jugo y 2 bolsas de tela.</p>
+    <p>Cada cliente debe adquirir un kit de cocas reutilizables por $80.000 (compra unica). El kit incluye: 2 cocas de vidrio para seco, 2 para sopa, 2 para ensalada, 2 botellas de vidrio para jugo, 1 juego de cubiertos reutilizables y 2 bolsas de tela.</p>
 
     <h3>4. Responsabilidad del Cliente</h3>
     <ul>
@@ -940,16 +807,16 @@
       <li>Las entregas se realizan de lunes a viernes segun la ruta establecida.</li>
       <li>El almuerzo puede llegar entre las <strong>11:30 am y la 1:30 pm</strong> dependiendo de la ruta.</li>
       <li>El domicilio esta incluido en el precio del plan dentro de la zona de cobertura, sin costo adicional.</li>
-      <li>Si requieres un horario especifico, podemos revisar tu caso y darte una respuesta: si la ruta se adapta a tu horario o si podemos enviarlo con domiciliario personalizado con un valor adicional.</li>
-      <li>Para zonas fuera de la cobertura urbana de Bello, se puede cotizar el servicio con un valor adicional de domicilio, previo aviso.</li>
+      <li>Si requieres un horario especifico, podemos revisar tu caso y darte una respuesta.</li>
+      <li>Para zonas fuera de la cobertura urbana de Bello, se puede cotizar el servicio con un valor adicional de domicilio.</li>
       <li>El cliente debe estar disponible en la direccion registrada. Si no se encuentra, no se reprograman entregas para ese dia.</li>
     </ul>
 
     <h3>6. Menu</h3>
-    <p>El menu cambia cada semana y se publica en nuestras redes sociales. ENCOCADOS se reserva el derecho de hacer ajustes al menu por disponibilidad de ingredientes, informando previamente al cliente.</p>
+    <p>El menu cambia cada semana y se publica en nuestras redes sociales. encocados se reserva el derecho de hacer ajustes al menu por disponibilidad de ingredientes, informando previamente al cliente.</p>
 
     <h3>7. Alergias, Restricciones y Planes Personalizados</h3>
-    <p>El cliente debe informar alergias o restricciones alimentarias al momento de la inscripcion. ENCOCADOS no garantiza la ausencia de alimentos diferentes a las alergias reportadas por el cliente.</p>
+    <p>El cliente debe informar alergias o restricciones alimentarias al momento de la inscripcion. encocados no garantiza la ausencia de alimentos diferentes a las alergias reportadas por el cliente.</p>
     <p>Si tienes muchas restricciones alimentarias o necesitas una personalizacion especial de tu coca, pregunta por nuestros <strong>planes personalizados</strong> con menu adaptado a tus necesidades.</p>
 
     <h3>8. Cancelaciones y Pausas</h3>
@@ -967,13 +834,11 @@
 </div>
 
 <script>
-  // WhatsApp link
   var waMsg = encodeURIComponent('Hola, estoy interesad@ en los planes para las cocas del almuerzo!');
   var waUrl = 'https://wa.me/573117574810?text=' + waMsg;
   document.getElementById('ctaWA').href = waUrl;
   document.getElementById('waBubble').href = waUrl;
 
-  // Force autoplay videos when visible
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
@@ -986,7 +851,6 @@
     observer.observe(v);
   });
 
-  // WhatsApp tooltip
   setTimeout(() => {
     document.getElementById('waTooltip').style.display = 'block';
     setTimeout(() => {
@@ -994,7 +858,6 @@
     }, 5000);
   }, 3000);
 
-  // T&C Modal
   function openTC() {
     document.getElementById('tcModal').classList.add('show');
   }
